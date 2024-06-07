@@ -18,7 +18,7 @@
 #ifndef SDE_EXPO_DIM_LAYER_H
 #define SDE_EXPO_DIM_LAYER_H
 
-#define DIM_THRES_LEVEL 86
+#define DIM_THRES_LEVEL 70
 
 enum {
 	BRIGHTNESS = 0,
@@ -42,12 +42,12 @@ static const uint8_t brightness_alpha_lut[][LUT_MAX] = {
 	{15, 0xA0},
 	{20, 0x8B},
 	{30, 0x72},
-	{45, 0x5A},
-	{60, 0x38},
-	{78, 0x0E},
-	{86, 0x00}
+	{32, 0x5A},
+	{45, 0x38},
+	{63, 0x0E},
+	{70, 0x00}
 };
 
-int expo_map_dim_level(int level, struct dsi_display *display, bool skip_update);
+int expo_map_dim_level(int level, struct dsi_display *display);
 
 #endif /* SDE_EXPO_DIM_LAYER_H */

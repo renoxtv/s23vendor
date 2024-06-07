@@ -1893,8 +1893,6 @@ struct panel_func {
 	void (*set_night_dim)(struct samsung_display_driver_data *vdd, int val);
 
 	bool (*analog_offset_on)(struct samsung_display_driver_data *vdd);
-
-	void (*pre_mdnie)(struct samsung_display_driver_data *vdd, struct dsi_cmd_desc *tune_data);
 };
 
 enum SS_VBIAS_MODE {

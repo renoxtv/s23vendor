@@ -82,7 +82,7 @@ static void set_dim_layer_exposure(uint8_t brightness, struct dsi_display *displ
 	crtc->funcs->atomic_set_property(crtc, state, prop, (uint64_t)brightness_to_alpha(brightness));
 }
 
-int expo_map_dim_level(int level, struct dsi_display *display, bool skip_update)
+int expo_map_dim_level(int level, struct dsi_display *display)
 {
 	int override_level;
 	uint8_t brightness = level > U8_MAX ? U8_MAX : level;
@@ -93,9 +93,7 @@ int expo_map_dim_level(int level, struct dsi_display *display, bool skip_update)
 		override_level = level;
 	}
 
-	if (!skip_update) {
-		set_dim_layer_exposure(brightness, display);
-	}
+	set_dim_layer_exposure(brightness, display);
 
 	return override_level;
 }

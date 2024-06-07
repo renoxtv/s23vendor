@@ -1477,6 +1477,12 @@ static int update_aor_DM1_S6E3FAC_AMB606AW01(struct samsung_display_driver_data 
 		LCD_ERR(vdd, "fail to find proper 0xXX position\n");
 		return -EINVAL;
 	}
+	
+#ifdef CONFIG_HYBRID_DC_DIMMING
+	cmd->txbuf[i] = 0x01;
+	cmd->txbuf[i + 1] = 0x00;
+	cmd->txbuf[i + 2] = 0x13;
+#else
 
 	if (cur_md_base == VRR_96HS || cur_md_base == VRR_48HS || cur_md_base == VRR_60HS)
 		cmd->txbuf[i] = 0x01;
@@ -1514,6 +1520,7 @@ static int update_aor_DM1_S6E3FAC_AMB606AW01(struct samsung_display_driver_data 
 				bl_lvl, cur_md_base, i,
 				manual_aor_map->cmds[bl_lvl][0], manual_aor_map->cmds[bl_lvl][1], cmd->tx_len);
 	}
+#endif
 
 	return 0;
 
