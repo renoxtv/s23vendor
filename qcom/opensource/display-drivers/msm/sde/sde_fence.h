@@ -37,6 +37,9 @@
  * @list_head: fence list to hold all the fence created on this context
  * @name: name of fence context/timeline
  */
+ 
+struct sde_hw_ctl;
+struct sde_hw_mdp;
 struct sde_fence_context {
 	unsigned int commit_count;
 	unsigned int done_count;
